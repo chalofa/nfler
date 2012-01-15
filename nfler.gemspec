@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = 'nfler'
   gem.require_paths = %w(lib)
   gem.version       = Nfler::VERSION
+
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'simplecov'
+  gem.add_development_dependency 'fuubar'
 end
