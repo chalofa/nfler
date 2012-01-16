@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = %w(lib)
   gem.version       = Nfler::VERSION
 
+  gem.add_dependency 'nokogiri'
+
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'simplecov'
