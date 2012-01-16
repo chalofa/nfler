@@ -1,9 +1,8 @@
 require 'open-uri'
 
-# NFLer::Page gets the body of an HTML/XML URI
-
 module Nfler
 
+  # NFLer::Page gets the body of an HTML/XML URI
   module Page
     class << self
 
