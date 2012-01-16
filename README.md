@@ -20,6 +20,11 @@ Or install it yourself as:
 
 TODO: Write usage instructions here
 
+## License
+
+This project is distributed under the GPL...
+See [LICENSE](./LICENSE) for more information, or http://www.gnu.org/licenses/gpl.txt
+
 ## Contributing
 
 1. Fork it
