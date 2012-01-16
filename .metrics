@@ -1,0 +1,4 @@
+MetricFu::Configuration.run do |config|
+  config.metrics  -= [:churn, :hotspots, :saikuro, :roodi]
+  #config.rcov[:external] = 'coverage/rcov/rcov.txt'
+end
