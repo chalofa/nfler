@@ -23,7 +23,7 @@ TODO: Write usage instructions here
 ## License
 
 This project is distributed under the GPL...
-See [LICENSE](./LICENSE) for more information, or http://www.gnu.org/licenses/gpl.txt
+See the LICENSE file for more information, or http://www.gnu.org/licenses/gpl.txt
 
 ## Contributing
 
