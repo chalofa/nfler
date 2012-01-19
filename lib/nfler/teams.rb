@@ -13,7 +13,7 @@ module Nfler
       def get
         page = Nfler::Page.get 'http://en.wikipedia.org/wiki/NFL'
         doc = Nokogiri.parse(page)
-        parse_teams doc.css('table.navbox.wikitable')
+        parse_teams doc.css('table.navbox.wikitable tr')
       end
 
 
@@ -25,8 +25,9 @@ module Nfler
       end
 
       def parse_teams(teams_data) #nodoc
+        conference = division = nil
         @teams = teams_data.reduce([]) do |teams, node|
-          teams << parse_team(node)
+          teams << parse_team(node, conference, division)
         end
       end
 
