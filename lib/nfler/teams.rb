@@ -47,12 +47,7 @@ module Nfler
       end
 
       def short_conference(name) #nodoc
-        case name
-        when 'American Football Conference'
-          'AFC'
-        else
-          'NFC'
-        end
+        name == 'American Football Conference' ? 'AFC' : 'NFC'
       end
 
     end
