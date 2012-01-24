@@ -7,15 +7,6 @@ describe Nfler::Teams do
   end
 
   describe '#get' do
-    it 'should be an array' do
-      subject.should be_an_instance_of Array
-    end
-
-    it 'should have 32 teams' do
-      pending 'This should work after filtering Teams'
-      subject.size.should == 32
-    end
-
     it 'should have Team instances inside' do
       subject.first.should be_an_instance_of Nfler::Team
     end
