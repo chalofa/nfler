@@ -19,8 +19,9 @@ module Nfler
 
       private
 
-      def parse_team(nodes, conference, division) #nodoc
-        #nodes.each {|node| puts node.text }
+      def parse_team(team_data, conference, division) #nodoc
+        nodes = remove_notes(team_data)
+
         Team.new conference: conference, division: division, name: nodes[0],
               city: nodes[1], stadium: nodes[2], founded: nodes[3], joined: nodes[4],
               coach: nodes[5], owner: nodes[6]
@@ -44,6 +45,10 @@ module Nfler
           @conference = short_conference(heads.first.text) if heads.size == 1
           false
         end
+      end
+
+      def remove_notes(nodes)
+        nodes.collect { |node| node.text.gsub /\s.$/, '' }
       end
 
       def short_conference(name) #nodoc
