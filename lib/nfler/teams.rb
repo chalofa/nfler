@@ -19,15 +19,15 @@ module Nfler
 
       private
 
-      def parse_team(team_data, conference, division) #nodoc
-        nodes = team_data.css('td')
+      def parse_team(nodes, conference, division) #nodoc
         Team.new name: nodes[0], city: nodes[1]
       end
 
       def parse_teams(teams_data) #nodoc
         conference = division = nil
         @teams = teams_data.reduce([]) do |teams, node|
-          teams << parse_team(node, conference, division)
+          team_data = node.css('td')
+          teams << parse_team(team_data, conference, division)
         end
       end
 

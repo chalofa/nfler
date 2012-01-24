@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Nfler::Teams do
+  let(:team_data) { mock Nokogiri::XML::Node }
+  let(:node) { mock Nokogiri::XML::Node, text: 'TEXT' }
 
   describe '#get' do
     before do
@@ -17,14 +19,10 @@ describe Nfler::Teams do
   end
 
   describe '#parse_team' do
-    let(:team_data) { mock Nokogiri::XML::Node }
-    let(:node) { mock Nokogiri::XML::Node, text: 'TEXT' }
-    before do
-      team_data.should_receive(:css).with('td').and_return [node, node, node, node, node, node, node]
-    end
+    let(:nodes) { 7.times { node } }
 
     it 'should extract team data' do
-      subject.send(:parse_team, team_data, 'Conference', 'Division').should_not be_nil
+      subject.send(:parse_team, nodes, 'Conference', 'Division').should_not be_nil
     end
   end
 
@@ -35,12 +33,13 @@ describe Nfler::Teams do
       end
     end
 
-    context 'when nothing' do
-      let(:teams_data) { [1, 2] }
-      before { subject.should_receive(:parse_team).twice }
-
-      it 'should parse each Team' do
-        subject.send(:parse_teams, teams_data).should_not be_empty
+    context 'when data' do
+      let(:header) { mock Nokogiri::XML::Node }
+      let(:teams_data) { [header, team_data] }
+      before do
+        header.should_receive(:css).and_return []
+        team_data.should_receive(:css).and_return []
+        #subject.should_receive(:parse_team) #<-TODO remove this
       end
 
       it 'should return an array' do
