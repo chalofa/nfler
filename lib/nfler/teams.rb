@@ -22,7 +22,7 @@ module Nfler
       def parse_team(team_data, conference, division) #nodoc
         nodes = remove_notes(team_data)
 
-        Team.new conference: conference, division: division, name: nodes[0],
+        Team.new name: nodes[0], conference: conference, division: division,
               city: nodes[1], stadium: nodes[2], founded: nodes[3], joined: nodes[4],
               coach: nodes[5], owner: nodes[6]
       end
