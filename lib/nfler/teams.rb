@@ -48,7 +48,9 @@ module Nfler
       end
 
       def remove_notes(nodes)
-        nodes.collect { |node| node.text.gsub /\s.$/, '' }
+        nodes.collect do |node|
+          node.text.gsub /(\s.|Vacant|\[\[\]\])$/, ''
+        end
       end
 
       def short_conference(name) #nodoc
