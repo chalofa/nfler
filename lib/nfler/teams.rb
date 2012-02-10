@@ -24,7 +24,7 @@ module Nfler
 
         Team.new name: nodes[0], conference: conference, division: division,
               city: nodes[1], stadium: nodes[2], founded: nodes[3], joined: nodes[4],
-              coach: nodes[5], owner: nodes[6]
+              coach: nodes[5], owner: nodes[6], short: name_to_short(nodes[0])
       end
 
       def parse_teams(teams_data) #nodoc
@@ -55,6 +55,22 @@ module Nfler
 
       def short_conference(name) #nodoc
         name == 'American Football Conference' ? 'AFC' : 'NFC'
+      end
+
+      def name_to_short(name) #nodoc
+        puts 'Searching for: ' + name
+        teams_finder.detect {|key, value| name.to_s.match(/#{key}/i)}.last
+      end
+
+      def teams_finder #nodoc
+        {bills: 'BUF', dolphins: 'MIA', patriots: 'NE', jets: 'NYJ',
+         ravens: 'BAL', bengals: 'CIN', browns: 'CLE', steelers: 'PIT',
+         texans: 'HOU', colts: 'IND', jaguars: 'JAC', titans: 'TEN',
+         broncos: 'DEN', chiefs: 'KC', raiders: 'OAK', chargers: 'SD',
+         cowboys: 'DAL', giants: 'NYG', eagles: 'PHI', redskins: 'WAS',
+         bears: 'CHI', lions: 'DET', packers: 'GB', vikings: 'MIN',
+         falcons: 'ATL', panthers: 'CAR', saints: 'NO', buccaneers: 'TB',
+         cardinals: 'ARI', rams: 'STL', :'49ers' => 'SF', seahawks: 'SEA'}
       end
 
     end

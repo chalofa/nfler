@@ -15,7 +15,6 @@ describe Nfler::Teams do
       it 'should include only the 32 teams' do
         subject.get.size.should == 32
       end
-
     end
 
     context 'when nothing' do
@@ -25,6 +24,21 @@ describe Nfler::Teams do
 
       it 'should return an empty array' do
         subject.get.should == []
+      end
+    end
+  end
+
+  # private methods
+  describe '#name_to_short' do
+    context 'when a team name' do
+      it 'should return the short code' do
+        subject.send(:name_to_short, 'Indianapolis Colts').should == 'IND'
+      end
+    end
+
+    context 'when not found' do
+      it 'should raise an exception' do
+        lambda {subject.send(:name_to_short, 'foo') }.should raise_exception
       end
     end
   end
