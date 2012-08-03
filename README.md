@@ -2,6 +2,8 @@
 
 NFL Ruby parsing library to get league data, teams, scores and more...
 
+[![Build Status](https://secure.travis-ci.org/chalofa/nfler.png?branch=master)](http://travis-ci.org/chalofa/nfler)
+
 ## Installation
 
 Add this line to your application's Gemfile:
