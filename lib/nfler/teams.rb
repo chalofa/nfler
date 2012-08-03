@@ -58,7 +58,6 @@ module Nfler
       end
 
       def name_to_short(name) #nodoc
-        puts 'Searching for: ' + name
         teams_finder.detect {|key, value| name.to_s.match(/#{key}/i)}.last
       end
 
